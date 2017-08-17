@@ -13,5 +13,6 @@ func BuildLL(strs []string) (root LLNode) {
 
 }
 
-func IsInGraph() {
+func IsInGraph(root LLNode, str string) (containsStr bool) {
+	return
 }
