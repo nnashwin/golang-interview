@@ -43,5 +43,9 @@ func StrDiff(str1 string, str2 string) (count float64) {
 
 func main() {
 	count := StrDiff("tyler", "trever")
+	count1 := StrDiff("", "")
+	count2 := StrDiff("tyler", "")
 	fmt.Println(count)
+	fmt.Println(count1)
+	fmt.Println(count2)
 }
