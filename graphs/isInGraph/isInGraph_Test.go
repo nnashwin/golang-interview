@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -18,17 +17,16 @@ func TestBuildLL(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		var out *List
+		var out List
 		el := Element{}
-		el.Val = 't'
-		out.root = Element{&el, out, ""}
+		el.Val = string('t')
+		out.root = Element{&el, &out, ""}
 		got := BuildLL(input)
+
 		if out.root.next.Val != got.root.next.Val {
 			t.Errorf("BuildLL(%g) != %g", c.in, got)
 		}
 	}
-
-	fmt.Printf("%+v", cases)
 }
 
 // func TestIsInGraph(t *testing.T) {
