@@ -19,7 +19,7 @@ type List struct {
 	len  int
 }
 
-func New() *List { return new(List).Init() }
+func NewList() *List { return new(List).Init() }
 
 func (l *List) Front() *Element {
 	if l.len == 0 {
@@ -38,7 +38,7 @@ func (l *List) InsertAtEnd(e *Element) *Element {
 	}
 
 	node := l.Front()
-	for node != nil {
+	for node.Next() != nil {
 		node = node.Next()
 	}
 
