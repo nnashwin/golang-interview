@@ -61,6 +61,12 @@ func TestIsInGraph(t *testing.T) {
 			"texas",
 			false,
 		},
+
+		{
+			l,
+			"",
+			false,
+		},
 	}
 
 	for _, c := range cases {
