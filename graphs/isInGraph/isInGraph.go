@@ -15,17 +15,31 @@ func BuildLL(strs []string) *List {
 }
 
 func IsInGraph(str string, l *List) (foundStr bool) {
-	strHash := make(map[string]int)
-	fmt.Println(strHash)
-	for e := l.Front(); e != nil; e = e.Next() {
-		fmt.Println(e.Val)
+	foundStr = false
+
+	if str == "" {
+		return
 	}
+
+	strHash := make(map[string]int)
+	for e := l.Front(); e != nil; e = e.Next() {
+		strHash[e.Val] += 1
+	}
+
+	for _, char := range str {
+		if strHash[string(char)] == 0 {
+			return
+		} else {
+			strHash[string(char)] -= 1
+		}
+	}
+
+	foundStr = true
 	return
 }
 
 func main() {
 	strs1 := []string{"t", "X", "T", "x", "y", "s", "P", "x"}
-	// strs2 := []string{"b", "r", "e", "a", "k", "t", "h", "e", "s", "p", "e", "l", "l"}
 	ll := BuildLL(strs1)
-	IsInGraph("tyler", ll)
+	fmt.Println(IsInGraph("tyler", ll))
 }
