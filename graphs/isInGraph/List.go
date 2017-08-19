@@ -3,7 +3,7 @@ package main
 type Element struct {
 	next *Element
 	list *List
-	Val  interface{}
+	Val  string
 }
 
 func (e *Element) Next() *Element {
