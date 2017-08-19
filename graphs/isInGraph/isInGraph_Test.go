@@ -29,14 +29,26 @@ func TestBuildLL(t *testing.T) {
 	}
 }
 
-// func TestIsInGraph(t *testing.T) {
-//   cases := []struct {
-//     graph 	LLNode
-//     str	string
-//   }{
-//     {
-//       LLNode{"}
-//       "tyler"
-//     }
-//   }
-// }
+func TestIsInGraph(t *testing.T) {
+	input := []string{"t", "X", "T", "x", "y", "s", "P", "x"}
+	cases := []struct {
+		graph *List
+		str   string
+		out   bool
+	}{
+		{
+			BuildLL(input),
+			"tyler",
+			false,
+		},
+	}
+
+	for _, c := range cases {
+		expected := c.out
+		got := IsInGraph(c.str, c.graph)
+
+		if expected != got {
+			t.Error("string is not contained within the graph")
+		}
+	}
+}
