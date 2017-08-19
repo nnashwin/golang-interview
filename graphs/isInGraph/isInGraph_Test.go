@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -31,14 +32,33 @@ func TestBuildLL(t *testing.T) {
 
 func TestIsInGraph(t *testing.T) {
 	input := []string{"t", "X", "T", "x", "y", "s", "P", "x"}
+	l := BuildLL(input)
 	cases := []struct {
 		graph *List
 		str   string
 		out   bool
 	}{
 		{
-			BuildLL(input),
+			l,
 			"tyler",
+			false,
+		},
+
+		{
+			l,
+			"cookies",
+			false,
+		},
+
+		{
+			l,
+			"tx",
+			true,
+		},
+
+		{
+			l,
+			"texas",
 			false,
 		},
 	}
@@ -46,6 +66,8 @@ func TestIsInGraph(t *testing.T) {
 	for _, c := range cases {
 		expected := c.out
 		got := IsInGraph(c.str, c.graph)
+		fmt.Println(expected)
+		fmt.Println(got)
 
 		if expected != got {
 			t.Error("string is not contained within the graph")
