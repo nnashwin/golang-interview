@@ -17,6 +17,7 @@ Explanation: 342 + 465 = 807.
 - There is a lot to learn from not knowing the answer to a problem, trying the problem by yourself for half an hour, then reading the answer / approach
 - If a number is under 10, dividing by 10 will equal 0
 - If a number is under 10, modulo by 10 will equal the number
+- The carry value might still be populated at the end.  We need to add another node outside of the while loop.
 
 ## Questions to Ask from Problem Statement
 - How do you want me to handle linked lists of different lengths?
