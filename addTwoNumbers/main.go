@@ -24,29 +24,32 @@ type ListNode struct {
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	// carryVal := 0
-	returnLst := ListNode{}
-	// currentNode := returnLst
-	// for *l1.Next != nil && *l2.Next != nil {
-	// 	currentNode.Val = (l1.Val + l2.Val) + carryVal
-	// 	currentNode.Next = ListNode{}
-	// 	carryVal = l1.Val % l2.Val
+	carryVal := 0
+	returnLst := &ListNode{}
+	currentNode := returnLst
+	for l1 != nil || l2 != nil {
+		currentNode.Val = (l1.Val + l2.Val) + carryVal
+		carryVal = (l1.Val + l2.Val) / 10
+		l1 = l1.Next
+		l2 = l2.Next
+		if l1 != nil || l2 != nil {
+			currentNode.Next = &ListNode{}
+			currentNode = currentNode.Next
+		}
+	}
 
-	// 	l1 = *l1.Next
-	// 	l2 = *l2.Next
-	// 	currentNode = *currentNode.Next
-	// }
-
-	return &returnLst
+	return returnLst
 }
 
 func createLinkedList(nums []int) *ListNode {
 	returnNode := &ListNode{}
 	currentNode := returnNode
-	for _, num := range nums {
+	for i, num := range nums {
 		currentNode.Val = num
-		currentNode.Next = &ListNode{}
-		currentNode = currentNode.Next
+		if i < len(nums)-1 {
+			currentNode.Next = &ListNode{}
+			currentNode = currentNode.Next
+		}
 	}
 
 	return returnNode
@@ -54,5 +57,10 @@ func createLinkedList(nums []int) *ListNode {
 
 func main() {
 	firstNode := createLinkedList([]int{1, 3, 2, 5, 4, 6})
-	fmt.Println(firstNode)
+	secondNode := createLinkedList([]int{5, 3, 2, 1, 4, 2})
+	res := addTwoNumbers(firstNode, secondNode)
+	for res != nil {
+		fmt.Println(res)
+		res = res.Next
+	}
 }
