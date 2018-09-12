@@ -37,6 +37,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			q = &ListNode{Val: 0}
 		}
 		sum := p.Val + q.Val + carryVal
+
 		carryVal = sum / 10
 		currentNode.Next = &ListNode{Val: sum % 10}
 		currentNode = currentNode.Next
@@ -47,6 +48,10 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		if l2 != nil {
 			l2 = l2.Next
 		}
+	}
+
+	if carryVal > 0 {
+		currentNode.Next = &ListNode{Val: carryVal}
 	}
 
 	return returnLst.Next
@@ -67,8 +72,8 @@ func createLinkedList(nums []int) *ListNode {
 }
 
 func main() {
-	firstNode := createLinkedList([]int{9, 6, 2, 5, 4, 6})
-	secondNode := createLinkedList([]int{5, 3, 2, 1})
+	firstNode := createLinkedList([]int{5})
+	secondNode := createLinkedList([]int{5})
 	res := addTwoNumbers(firstNode, secondNode)
 	for res != nil {
 		fmt.Println(res)
