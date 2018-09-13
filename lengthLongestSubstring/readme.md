@@ -22,4 +22,8 @@ Output: 3
 Explanation: The answer is "wke", with the length of 3.
              Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
+## Things Learned
 
+## Questions to Ask from Problem Statement
+- Are there any memory constraints that are imposed on the algorithm?
+- Can we assume all strings are lowercase letters, or will there be capital letters too?
