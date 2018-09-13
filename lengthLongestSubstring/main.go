@@ -1,28 +1,35 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+func findMax(x int, y int) int {
+	if x > y {
+		return x
+	}
+
+	return y
+}
 
 func lengthOfLongestSubstring(s string) int {
 	seenHash := make(map[string]int)
-	currCount := 0
-	longestCount := 0
-	for _, char := range s {
-		strChar := string(char)
-		if _, ok := seenHash[strChar]; ok == false {
-			currCount += 1
-			seenHash[strChar] = 1
+	strLen := len(s)
+	ans, i, j := 0, 0, 0
+	for i < strLen && j < strLen {
+		headStr := string(s[i])
+		tailStr := string(s[j])
+		if _, ok := seenHash[tailStr]; ok == false {
+			seenHash[tailStr] = 1
+			j += 1
+			ans = findMax(ans, j-i)
 		} else {
-			seenHash = make(map[string]int)
-			currCount = 1
-			seenHash[strChar] = 1
-		}
-
-		if currCount > longestCount {
-			longestCount = currCount
+			delete(seenHash, headStr)
+			i += 1
 		}
 	}
 
-	return longestCount
+	return ans
 }
 
 func main() {
