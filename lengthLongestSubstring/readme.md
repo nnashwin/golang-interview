@@ -23,6 +23,8 @@ Explanation: The answer is "wke", with the length of 3.
              Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
 ## Things Learned
+- In golang, the first part of a map accessor returned is the value stored under the key.
+-- If there is no value stored under the key, that value is the empty value for that type i.e. for a map[string]int,  val, _ := map["cookies"], if there are no cookies, this value is 0.
 
 ## Questions to Ask from Problem Statement
 - Are there any memory constraints that are imposed on the algorithm?
