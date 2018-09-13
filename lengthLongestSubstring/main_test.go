@@ -3,10 +3,32 @@ package main
 import "testing"
 
 func TestLengthOfLongestSubstring(t *testing.T) {
-	str := "abcabcabb"
-	expected := 3
-	actual := lengthOfLongestSubstring(str)
-	if expected != actual {
-		t.Errorf("The expected length of the longest Substring didn't match the actual.  Expected: %d\nActual: %d", expected, actual)
+	cases := []struct {
+		expected     int
+		stringToTest string
+	}{
+		{
+			3,
+			"abcabc",
+		},
+		{
+			3,
+			"pwwkewppooo",
+		},
+		{
+			4,
+			"pokeppp",
+		},
+		{
+			1,
+			"aaaaaa",
+		},
+	}
+
+	for _, c := range cases {
+		actual := lengthOfLongestSubstring(c.stringToTest)
+		if c.expected != actual {
+			t.Errorf("The expected length of the longest Substring didn't match the actual.  Expected: %d\nActual: %d", c.expected, actual)
+		}
 	}
 }
