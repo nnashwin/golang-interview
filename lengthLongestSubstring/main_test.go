@@ -23,6 +23,10 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 			1,
 			"aaaaaa",
 		},
+		{
+			3,
+			"dvdk",
+		},
 	}
 
 	for _, c := range cases {
