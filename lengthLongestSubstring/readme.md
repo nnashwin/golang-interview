@@ -25,6 +25,7 @@ Explanation: The answer is "wke", with the length of 3.
 ## Things Learned
 - In golang, the first part of a map accessor returned is the value stored under the key.
 -- If there is no value stored under the key, that value is the empty value for that type i.e. for a map[string]int,  val, _ := map["cookies"], if there are no cookies, this value is 0.
+- If I just loop through and assign the characters to the hash, I only get the tail end comparison.  If we imagine the examined substring as a "Sliding Window", my window has gaps because I'm blindly resetting on each duplicate character.  I'm not comparing the substrings in between.
 
 ## Questions to Ask from Problem Statement
 - Are there any memory constraints that are imposed on the algorithm?
