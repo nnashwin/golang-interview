@@ -27,3 +27,4 @@ Explanation: The answer is "wke", with the length of 3.
 ## Questions to Ask from Problem Statement
 - Are there any memory constraints that are imposed on the algorithm?
 - Can we assume all strings are lowercase letters, or will there be capital letters too?
+- If a character in the substring is found to repeat, do we count that character as the beginning of the new substring?
