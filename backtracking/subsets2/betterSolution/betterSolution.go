@@ -14,7 +14,7 @@ func findSubsets(inputArr []int) [][]int {
 
 func backtrack(inputArr []int, subsets *[][]int, index int, tempArr []int) {
 	newTemp := make([]int, len(tempArr))
-	copy(newTemp, tempArr)
+	copy(newTemp[0:len(tempArr)], tempArr)
 	*subsets = append(*subsets, newTemp)
 
 	for i := index; i < len(inputArr); i++ {
@@ -24,10 +24,12 @@ func backtrack(inputArr []int, subsets *[][]int, index int, tempArr []int) {
 
 		tempArr = append(tempArr, inputArr[i])
 		backtrack(inputArr, subsets, i+1, tempArr)
-		tempArr = tempArr[1:]
+		tempArr = tempArr[:len(tempArr)-1]
 	}
 }
 
 func main() {
 	fmt.Println(findSubsets([]int{1, 2, 2}))
+	fmt.Println(findSubsets([]int{1, 2, 3}))
+	fmt.Println(findSubsets([]int{4, 4, 4, 1, 4}))
 }
