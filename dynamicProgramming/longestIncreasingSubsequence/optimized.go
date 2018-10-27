@@ -14,6 +14,9 @@ func longestIncreasingSubsequence(arr []int) int {
 			idx := 0
 			longSubLength := len(longestSubsequence) - 1
 
+			// use binary search to see if any numbers in the already assembled sequence array are less than the current number
+			// if they are, keep binary searching to either find a number that is bigger, make the length where that number is and swap it
+			// or keep searching until you do not find a number that is bigger (then we will append it to the end)
 			for idx < longSubLength {
 				mid := (idx + longSubLength) / 2
 				if longestSubsequence[mid] < num {
