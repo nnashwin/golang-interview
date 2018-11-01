@@ -27,3 +27,6 @@ Note:
     The knight's health has no upper bound.
     Any room can contain threats or power-ups, even the first room the knight enters and the bottom-right room where the princess is imprisoned.
 
+## Questions to ask
+- Are we certain the map is a square? (equal lengthwise and widthwise)
+- 
