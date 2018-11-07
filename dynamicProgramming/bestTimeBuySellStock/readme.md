@@ -24,7 +24,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 - Is this just tracking one stock over time?
 - What should we do if the array is empty?
 
-## Analysis
+## Complexity Analysis
 The implementation runs in linear time O(n) and constant space O(1).
 Basically we start out with a specific min and potential diff (the first array index and the second index minus the first index respectively).
 At each point in the for loop, we add the max of each potential diff vs the first diff (maxDiff) and find the minimum between the minimum index and the next index in the array.
