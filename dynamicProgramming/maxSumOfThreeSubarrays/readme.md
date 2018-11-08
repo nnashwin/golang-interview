@@ -8,3 +8,6 @@ Output: [0, 3, 5]
 Explanation: Subarrays [1, 2], [2, 6], [7, 5] correspond to the starting indices [0, 3, 5].
 We could have also taken [2, 1], but an answer of [1, 3, 5] would be lexicographically larger.
 
+## Questions to ask
+- Is the maximum sum talking about the maximum sum within the array, or the maximum sum of relative indices in the array?
+-- I.E. so if I had 3 arrays [1, 2], [3, 4], [5 6] would I be adding the arrays together, or adding the relative indices together?
