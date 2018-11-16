@@ -7,6 +7,7 @@ func longestIncreasingSubsequence(arr []int) int {
 	longestLen := 0
 
 	for i := 0; i < len(arr); i++ {
+		fmt.Println(longestSubsequence)
 		num := arr[i]
 		if len(longestSubsequence) == 0 || num > longestSubsequence[len(longestSubsequence)-1] {
 			longestSubsequence = append(longestSubsequence, num)
@@ -18,6 +19,9 @@ func longestIncreasingSubsequence(arr []int) int {
 			// if they are, keep binary searching to either find a number that is bigger, make the length where that number is and swap it
 			// or keep searching until you do not find a number that is bigger (then we will append it to the end)
 			for idx < longSubLength {
+				fmt.Println("longSubLength: ", longSubLength)
+				fmt.Println("num: ", num)
+				fmt.Println("idx: ", idx)
 				mid := (idx + longSubLength) / 2
 				if longestSubsequence[mid] < num {
 					idx += mid + 1
@@ -30,10 +34,10 @@ func longestIncreasingSubsequence(arr []int) int {
 
 		longestLen = len(longestSubsequence)
 	}
+	fmt.Println(longestSubsequence)
 	return longestLen
 }
 
 func main() {
-	fmt.Println(longestIncreasingSubsequence([]int{9, 1, 3, 7, 5, 6, 20}))
-	fmt.Println(longestIncreasingSubsequence([]int{0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15}))
+	fmt.Println(longestIncreasingSubsequence([]int{2, 3, 4, 7, 13, 17, 9, 16}))
 }
