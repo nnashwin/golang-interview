@@ -1,7 +1,7 @@
 # golang-interview
 
 ## Description
-A repo of interview questions written by a guy who had to teach himself.
+A repo of interview questions written by a guy who had to teach himself
 
 **## How to start learning this stuff by yourself
 - LEARN BY CATEGORY
