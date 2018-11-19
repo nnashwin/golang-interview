@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type BNode struct {
-	val         int
+	Val         int
 	Left, Right *BNode
 }
 
@@ -33,25 +33,62 @@ func spush(stack *[]BNode, node BNode) {
 	*stack = append(*stack, node)
 }
 
-func findKBiggestNode(bst BNode) *BNode {
-	if bst == (BNode{}) {
+func newNode(key int) *BNode {
+	node := BNode{Val: key}
+	return &node
+}
+
+func bstInsert(root *BNode, key int) *BNode {
+	if root == nil {
+		return newNode(key)
+	}
+
+	if key < root.Val {
+		root.Left = bstInsert(root.Left, key)
+	} else {
+		root.Right = bstInsert(root.Right, key)
+	}
+
+	return root
+}
+
+func findKBiggestNode(root BNode, k int) *BNode {
+	if root == (BNode{}) {
 		return nil
 	}
+
+	stack := []BNode{root}
+	currentNode := root
+	for currentNode != (BNode{}) || len(stack) > 0 {
+		if currentNode.Right != nil {
+			spush(&stack, *currentNode.Right)
+			currentNode = *currentNode.Right
+		} else {
+			node := spop(&stack)
+			k--
+			if k == 0 {
+				return node
+			} else if currentNode.Left != nil {
+				currentNode = *currentNode.Left
+			}
+		}
+	}
+
 	return nil
 }
 
 func main() {
 	fmt.Println("vim-go")
-	bnode := BNode{val: 100}
-	bnode2 := BNode{val: 101}
-	bnode3 := BNode{val: 102}
+	root := &BNode{}
+	keys := []int{15, 10, 20, 8, 5, 2}
+	for _, k := range keys {
+		root = bstInsert(root, k)
+	}
 
-	stack := []BNode{}
+	for root.Right != nil {
+		fmt.Println(root)
+		root = root.Right
+	}
 
-	spush(&stack, bnode)
-	spush(&stack, bnode2)
-	spush(&stack, bnode3)
-	node := spop(&stack)
-	fmt.Println(node)
-	fmt.Println(stack)
+	fmt.Println(root)
 }
