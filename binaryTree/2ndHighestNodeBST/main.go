@@ -52,24 +52,25 @@ func bstInsert(root *BNode, key int) *BNode {
 	return root
 }
 
-func findKBiggestNode(root BNode, k int) *BNode {
-	if root == (BNode{}) {
+func findKBiggestNode(root *BNode, k int) *BNode {
+	if root == nil {
 		return nil
 	}
 
-	stack := []BNode{root}
+	stack := []BNode{*root}
 	currentNode := root
-	for currentNode != (BNode{}) || len(stack) > 0 {
+	for currentNode != nil || len(stack) > 0 {
 		if currentNode.Right != nil {
 			spush(&stack, *currentNode.Right)
-			currentNode = *currentNode.Right
+			*currentNode = *currentNode.Right
 		} else {
 			node := spop(&stack)
 			k--
 			if k == 0 {
 				return node
 			} else if currentNode.Left != nil {
-				currentNode = *currentNode.Left
+				//currentNode = *currentNode.Left
+				spush(&stack, *currentNode.Left)
 			}
 		}
 	}
@@ -78,17 +79,15 @@ func findKBiggestNode(root BNode, k int) *BNode {
 }
 
 func main() {
-	fmt.Println("vim-go")
-	root := &BNode{}
+	var root *BNode
 	keys := []int{15, 10, 20, 8, 5, 2}
 	for _, k := range keys {
 		root = bstInsert(root, k)
 	}
 
-	for root.Right != nil {
-		fmt.Println(root)
-		root = root.Right
-	}
-
 	fmt.Println(root)
+
+	fmt.Println(findKBiggestNode(root, 2))
+	// fmt.Println(findKBiggestNode(*root, 3))
+	// fmt.Println(findKBiggestNode(*root, 4))
 }
