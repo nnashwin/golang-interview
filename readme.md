@@ -1,9 +1,10 @@
 # golang-interview
 
 ## Description
-A repo of interview questions written by a guy who had to teach himself.
+A repo of interview questions written by a guy who had to teach himself
 
-**## How to start learning this stuff by yourself
+
+## How to start learning this stuff by yourself
 - LEARN BY CATEGORY
 In the past, I chose leetcode / interview topics at random to learn.
 Because of this, I never felt confident enough in any particular topic.
