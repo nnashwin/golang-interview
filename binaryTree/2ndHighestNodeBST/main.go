@@ -60,7 +60,6 @@ func findKBiggestNode(root *BNode, k int) *BNode {
 	stack := []BNode{*root}
 	currentNode := root
 	for currentNode != nil || len(stack) > 0 {
-		fmt.Println(currentNode)
 		for currentNode.Right != nil {
 			spush(&stack, *currentNode.Right)
 			*currentNode = *currentNode.Right
@@ -81,8 +80,7 @@ func findKBiggestNode(root *BNode, k int) *BNode {
 
 func createBst(arr []int) *BNode {
 	var root *BNode
-	keys := []int{15, 10, 20, 8, 5, 2}
-	for _, k := range keys {
+	for _, k := range arr {
 		root = bstInsert(root, k)
 	}
 
@@ -93,5 +91,5 @@ func main() {
 
 	bst3 := createBst([]int{15, 10, 20, 8, 5, 2})
 
-	fmt.Println(findKBiggestNode(bst3, 6))
+	fmt.Println(findKBiggestNode(bst3, 2))
 }
