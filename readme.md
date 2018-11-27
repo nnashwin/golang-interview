@@ -23,3 +23,17 @@ I also signed up to a couple newletters that ping me each week / day with questi
 
 This might seem like it violates the "don't choose random question to study" rule, but I think that after you are fairly familiar a few topics,
 some type of review mechanism will work to refresh these in your head from time to time.
+
+## You Will Fail Interviews
+I haven't met any people yet who don't have failure interview experiences.  Mine are especially bad.
+Keep practicing consistently and reviewing concepts.  Do this until you are bored.  Then do something else.  Then (maybe) start again.
+I am not the type of person who can grind these concepts right before interviewing everywhere.  Instead, I'm the kind of person who enjoys
+the pain of the slow interview grind.
+
+This might sound more efficient, but I have still yet to get asked to an onsite FANG (Facebook, Amazon, Netflix, Google) interview and have failed each
+phone interview so far.  :monkey_face:
+
+So DON'T GIVE UP, keep trying, and also do some projects for fun. If you aren't having fun programming, why do it at all?
+Yes, you can make some money starting off, but most (not all) jobs will make you similar money if you become extremely skilled in them.
+Many jobs will make you even more when you become great.  So program for love, study algorithm questions to learn and interview,
+and also try to find projects to enjoy.
