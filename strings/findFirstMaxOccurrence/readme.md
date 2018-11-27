@@ -1,4 +1,4 @@
-# findMaxOccurrence
+# findFirstMaxOccurrence
 
 ## Problem Definition
 Given a string, find its first Most Repeated character
