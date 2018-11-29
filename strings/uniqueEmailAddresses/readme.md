@@ -14,3 +14,8 @@ If you add a plus ('+') in the local name, everything after the first plus sign 
 It is possible to use both of these rules at the same time.
 
 Given a list of emails, we send one email to each address in the list.  How many different addresses actually receive mails?
+
+## Complexity
+The Time algorithm runs in O(m * n) where m is the length of array emails and n is the length of the longest string in emails.
+
+The space complexity is n in the worst case, where n is the total amount of strings in the array of emails.  This happens when there are no duplicate email addresses.
