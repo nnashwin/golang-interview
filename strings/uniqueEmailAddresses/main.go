@@ -39,4 +39,5 @@ func numUniqueEmails(emails []string) int {
 
 func main() {
 	fmt.Println(numUniqueEmails([]string{"test.email+alex@leetcode.com", "test.e.mail+bob.cathy@leetcode.com", "testemail+david@lee.tcode.com"}))
+	fmt.Println(numUniqueEmails([]string{"test@leetcode.com", "te@stleetcode.com"}))
 }
