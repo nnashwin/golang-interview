@@ -18,4 +18,4 @@ Given a list of emails, we send one email to each address in the list.  How many
 ## Complexity
 The Time algorithm runs in O(m * n) where m is the length of array emails and n is the length of the longest string in emails.
 
-The space complexity is n in the worst case, where n is the total amount of strings in the array of emails.  This happens when there are no duplicate email addresses.
+The space complexity is n in the worst case, where n is the total amount of strings in the array of emails that would be stored in the hashmap.  This happens when there are no duplicate email addresses.
