@@ -34,3 +34,5 @@ Input: Root of below tree
 Output 2
 Closest leaf is 12 through 10.
 
+Questions to ask:
+1. Is the binary tree a bst?  Does it have order?
