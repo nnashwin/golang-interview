@@ -26,8 +26,33 @@ func knapSackGreedyRecursive(W int, wt []int, val []int, n int) int {
 	return max((val[n-1] + knapSackGreedyRecursive(W-wt[n-1], wt, val, n-1)), knapSackGreedyRecursive(W, wt, val, n-1))
 }
 
+func knapsackGreedyDP(W int, wt []int, val []int, n int) int {
+	var K [][]int
+	for i := 0; i <= n; i++ {
+		K = append(K, []int{})
+		for w := 0; w <= W; w++ {
+			K[i] = append(K[i], 0)
+		}
+	}
+
+	for i := 0; i <= n; i++ {
+		for w := 0; w <= W; w++ {
+			if i == 0 || w == 0 {
+				K[i][w] = 0
+			} else if wt[i-1] <= w {
+				K[i][w] = max(val[i-1]+K[i-1][w-wt[i-1]], K[i-1][w])
+			} else {
+				K[i][w] = K[i-1][w]
+			}
+		}
+	}
+
+	return K[n][W]
+}
+
 func main() {
 	fmt.Println("vim-go")
 
 	fmt.Println(knapSackGreedyRecursive(50, []int{10, 20, 30}, []int{60, 100, 120}, 3))
+	fmt.Println(knapsackGreedyDP(50, []int{10, 20, 30}, []int{60, 100, 120}, 3))
 }
