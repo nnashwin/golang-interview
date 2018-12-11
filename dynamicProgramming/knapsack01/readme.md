@@ -25,7 +25,7 @@ The other index is the item index.
 
 So for each item, we see if the item or w is 0.  If so, return 0.
 if it's not 0, and the wt of the current item is less than the weight index we are at, we set the current
-item and weight value as the max of the value of the current item plus the value of the bag when we take the item and subtract the weight and the 
+item and weight value as the max of the value of the current item plus the value of the bag when we take the item and subtract the weight and the
 value we have recorded of when we don't take the item and maintain the current weight.
 
 Even though this previous index was built earlier in the loop, it describes the situation where we have already taken the item.  For example, let's say that we are describing a situation on the second item
@@ -33,4 +33,18 @@ where the weight of the item is 20, the value is 30, and the current weight of t
 The first option was built earlier in the for loop and describes the decisions you can make when you have those weight limitations at that point.  So we are really comparing the max of 20 + best value possible at capacity 3 with previous item and best value possible at capacity 23 with previous item.
 
 Else, if the weight of the item is greater than the current weight index, we set the value of the bag as the same as it was before this item, just like we did in the recursive solution.
+
+## Further Observations
+Observation: In the Knapsack DP solution, we have a 2d array where the inner arrays describe encountering an item with specific weights in the knapsack.
+
+So each actual inner array represents encountering an item at a period of time, and the 1, 2, 3, 4, 5 indices in the inner arrays describe the weight of the bag at that time.
+[
+1 [1, 2, 3, 4, 5]
+2 [1, 2, 3, 4, 5]
+3 [1, 2, 3, 4, 5]
+]
+
+We actually also calculate some weight item pairs that are probably impossible combinations in the grand scheme of things, because they are not actual combinations of weights that the items comprise.
+
+We run the algorithm on each combination and optimize for max value, then return the max value at the biggest index, the max of maxes so to speak.
 
