@@ -47,4 +47,15 @@ func main() {
 		fmt.Println(current)
 		current = current.Next
 	}
+
+	secList := newNode(1)
+	third := newNode(2)
+	fourth := newNode(3)
+	secList.Next = third
+	third.Next = fourth
+	third = deleteListNode(*third, *secList)
+	for current := secList; current != nil; {
+		fmt.Println(current)
+		current = current.Next
+	}
 }
