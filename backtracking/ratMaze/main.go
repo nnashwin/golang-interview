@@ -42,10 +42,50 @@ func findPath(maze [][]int, x int, y int, solution *[][]int) bool {
 	return false
 }
 
+func findPathWithBackMotion(maze *[][]int, x int, y int, solution *[][]int) bool {
+	l := len(*maze)
+
+	if x == l-1 && y == l-1 {
+		(*solution)[x][y] = 1
+		return true
+	}
+
+	(*maze)[x][y] = 0
+	(*solution)[x][y] = 1
+
+	if isSafe((*maze), x+1, y) && findPathWithBackMotion(maze, x+1, y, solution) {
+		return true
+	}
+
+	if isSafe(*maze, x, y+1) && findPathWithBackMotion(maze, x, y+1, solution) {
+		return true
+	}
+
+	if isSafe(*maze, x-1, y) && findPathWithBackMotion(maze, x-1, y, solution) {
+		return true
+	}
+
+	if isSafe(*maze, x, y-1) && findPathWithBackMotion(maze, x, y-1, solution) {
+		return true
+	}
+
+	(*solution)[x][y] = 0
+	return false
+}
+
 func ratInAMaze(maze [][]int) [][]int {
 	solution := buildMatrix(len(maze))
 
 	if findPath(maze, 0, 0, &solution) == true {
+		return solution
+	}
+
+	return nil
+}
+
+func ratInAMazeBack(maze [][]int) [][]int {
+	solution := buildMatrix(len(maze))
+	if findPathWithBackMotion(&maze, 0, 0, &solution) == true {
 		return solution
 	}
 
@@ -57,7 +97,16 @@ func main() {
 		[]int{1, 1, 1, 1},
 		[]int{0, 0, 1, 0},
 		[]int{0, 1, 1, 1}}
+	fmt.Println(maze)
 
 	fmt.Println(ratInAMaze(maze))
-	fmt.Println("vim-go")
+
+	maze2 := [][]int{
+		[]int{1, 1, 0, 0},
+		[]int{0, 1, 0, 0},
+		[]int{1, 1, 0, 0},
+		[]int{1, 1, 1, 1},
+	}
+
+	fmt.Println(ratInAMazeBack(maze2))
 }
