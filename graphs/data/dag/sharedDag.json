@@ -1,35 +1,27 @@
 {
     "nodes": {
         "five": {
-            "val": 5,
             "children": ["eleven"]
         },
         "seven": {
-            "val": 7,
             "children": ["eleven", "eight"]
         },
         "eleven": {
-            "val": 11,
             "children": ["two", "nine", "ten"]
         },
         "eight": {
-            "val": 8,
             "children": ["nine"]
         },
         "three": {
-            "val": 3,
             "children": ["eight", "ten"]
         },
         "two": {
-            "val": 2,
             "children": []
         },
         "nine": {
-            "val": 9,
             "children": []
         },
         "ten": {
-            "val": 10,
             "children": []
         }
     }
