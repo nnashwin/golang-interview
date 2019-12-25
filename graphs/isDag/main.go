@@ -91,9 +91,9 @@ func main() {
 	dagG := readGraphFromJson("../data/dag/sharedDag.json")
 	fmt.Println(isDag(dagG))
 
-	a := GraphNode{Children: []string{"b"}}
+	a := GraphNode{Children: []string{"b", "c"}}
 	b := GraphNode{Children: []string{"c"}}
-	c := GraphNode{Children: []string{"d"}}
+	c := GraphNode{Children: []string{"d", "a"}}
 	d := GraphNode{Children: []string{"a"}}
 	gm := make(map[string]*GraphNode)
 	gm["a"] = &a
