@@ -20,7 +20,6 @@ const (
 )
 
 type GraphNode struct {
-	Val        int64    `json:"val"`
 	Children   []string `json:"children"`
 	HasVisited VisitedStatus
 }
@@ -59,9 +58,9 @@ func visit(nodes *map[string]*GraphNode, n string, sortedNodes *[]string) {
 	*sortedNodes = append([]string{n}, *sortedNodes...)
 }
 
-func main() {
+func readGraphFromJson(fileLoc string) Graph {
 	// read from the data dir in the graphs folder
-	jsonFile, err := os.Open("../data/dag/sharedDag.json")
+	jsonFile, err := os.Open(fileLoc)
 
 	if err != nil {
 		panic(err)
@@ -78,5 +77,14 @@ func main() {
 		panic(err)
 	}
 
-	topologicalSort(g)
+	return g
+}
+
+func main() {
+	sharedDagG := readGraphFromJson("../data/dag/sharedDag.json")
+
+	fmt.Println(topologicalSort(sharedDagG))
+
+	readmeGraph := readGraphFromJson("nodeDag.json")
+	fmt.Println(topologicalSort(readmeGraph))
 }

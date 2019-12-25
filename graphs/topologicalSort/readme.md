@@ -54,6 +54,7 @@ The algorithm I chose to implement Topological Sort in this instance is based of
 The reason I loop through the array of nodes and run visit on each node is because these abstract tasks are not directly connected.  If I just inputted one node, the DFS would only figure out which tasks are required (children) of that particular node.
 With Topological Sort, we can feed an entire graph of disparate tasks that might not have direct relationships with each other and still ensure that they are processed in the correct order.
 
+The input to the function is the graph represented as a map and the output is a slice of strings that are ordered from left to right. This order represents the tasks on the left being required to be completed before the tasks on the right. 
 
 ## Most Realest Application I can think of right now
 I represented the graph as a JSON file that contains nodes as a HashMap in which each node has a name, a value, and the children that are dependent on this node. In most real life programming scenarios I have seen, the dependencies would not know the dependent libraries, rather the dependent libraries would know which
