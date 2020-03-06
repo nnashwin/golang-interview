@@ -63,5 +63,7 @@ func findKnightsTour(boardSize int) ([][]int, error) {
 
 func main() {
 	fmt.Println(findKnightsTour(2))
+	fmt.Println(findKnightsTour(3))
 	fmt.Println(findKnightsTour(6))
+	fmt.Println(findKnightsTour(7))
 }
