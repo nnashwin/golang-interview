@@ -62,4 +62,5 @@ func main() {
 	fmt.Println(maxSum([]int{1, -3, 2, 1, -1}))
 	fmt.Println(maximumSumInefficient([]int{1, -3, 2, 1, -1}))
 	fmt.Println(maximumSumWithIndices([]int{1, -3, 2, 1, -1}))
+	fmt.Println(maximumSumWithIndices([]int{1, -3, 2, 1, -1, -9, 9, -9}))
 }
