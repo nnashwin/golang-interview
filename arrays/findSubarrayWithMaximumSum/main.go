@@ -11,7 +11,7 @@ func max(a, b int) int {
 }
 
 func maximumSumInefficient(arr []int) int {
-	globalMax := 0
+	globalMax := arr[0]
 	for i := 0; i < len(arr); i++ {
 		localMax := arr[i]
 		for j := i + 1; j < len(arr); j++ {
@@ -24,8 +24,9 @@ func maximumSumInefficient(arr []int) int {
 }
 
 func maxSum(arr []int) int {
-	currentMax, maxEndingHere := 0, 0
-	for _, val := range arr {
+	currentMax, maxEndingHere := arr[0], arr[0]
+	for idx := 1; idx < len(arr); idx++ {
+		val := arr[idx]
 		maxEndingHere = max(maxEndingHere+val, val)
 		currentMax = max(maxEndingHere, currentMax)
 	}
@@ -60,7 +61,10 @@ func main() {
 	fmt.Println(maxSum([]int{1, 3, 5, 7, 9}))
 	fmt.Println(maxSum([]int{1, -3, 2, 1, -1}))
 	fmt.Println(maxSum([]int{1, -3, 2, 1, -1}))
+	fmt.Println(maxSum([]int{-2, 1, -3, 4, -1, 2, 1, -5, 4}))
+	fmt.Println(maxSum([]int{-1}))
 	fmt.Println(maximumSumInefficient([]int{1, -3, 2, 1, -1}))
+	fmt.Println(maximumSumInefficient([]int{-1}))
 	fmt.Println(maximumSumWithIndices([]int{1, -3, 2, 1, -1}))
 	fmt.Println(maximumSumWithIndices([]int{1, -3, 2, 1, -1, -9, 9, -9}))
 }
