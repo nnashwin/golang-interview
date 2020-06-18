@@ -63,6 +63,21 @@ func findFirstDuplicateOptimized(ints []int) int {
 	return returnVal
 }
 
+func findFirstDuplicateAbsolute(ints []int) int {
+	returnVal := -1
+	for _, val := range ints {
+		absValInt := int(math.Abs(float64(val)))
+		if ints[absValInt] < 0 {
+			returnVal = absValInt
+			break
+		} else {
+			ints[absValInt] = ints[absValInt] * -1
+		}
+	}
+
+	return returnVal
+}
+
 func main() {
 	// test cases
 	fmt.Println(`
@@ -80,4 +95,12 @@ func main() {
 	fmt.Println(findFirstDuplicateOptimized([]int{1, 2, 3, 4, 1}) == 1)
 	fmt.Println(findFirstDuplicateOptimized([]int{1, 2, 3, 4, 2, 1}) == 2)
 	fmt.Println(findFirstDuplicateOptimized([]int{6, 8, 1, 4, 2, 8, 6}) == 8)
+
+	fmt.Println(`
+	    findFirstDuplicateAbsolute
+	`)
+	fmt.Println(findFirstDuplicateAbsolute([]int{0, 1, 2, 3}) == -1)
+	fmt.Println(findFirstDuplicateAbsolute([]int{1, 2, 3, 4, 1}) == 1)
+	fmt.Println(findFirstDuplicateAbsolute([]int{1, 2, 3, 4, 2, 1}) == 2)
+	fmt.Println(findFirstDuplicateAbsolute([]int{6, 8, 1, 4, 2, 8, 6, 2, 1}) == 8)
 }
