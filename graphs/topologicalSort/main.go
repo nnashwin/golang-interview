@@ -1,34 +1,11 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
-	"os"
+	gu "github.com/tlboright/golang-interview/graphs/utils"
 )
 
-// declare an enum VisitedStatus to map out 3 states in the sort:
-// NotVisited -- This GraphNode has never been seen before
-// JustVisited -- The GraphNode was seen in the current DFS visit recursive stack.  This enables us to check for cycles
-// HasVisited -- This node is already in the list of sorted nodes for the graph and should not be visited again
-type VisitedStatus int
-
-const (
-	NotVisited VisitedStatus = iota
-	JustVisited
-	PermVisited
-)
-
-type GraphNode struct {
-	Children   []string `json:"children"`
-	HasVisited VisitedStatus
-}
-
-type Graph struct {
-	GraphNodes map[string]*GraphNode `json:"nodes"`
-}
-
-func topologicalSort(g Graph) (sortedNodes []string) {
+func topologicalSort(g gu.Graph) (sortedNodes []string) {
 	for k, _ := range g.GraphNodes {
 		visit(&g.GraphNodes, k, &sortedNodes)
 	}
@@ -36,55 +13,33 @@ func topologicalSort(g Graph) (sortedNodes []string) {
 	return
 }
 
-func visit(nodes *map[string]*GraphNode, n string, sortedNodes *[]string) {
+func visit(nodes *map[string]*gu.GraphNode, n string, sortedNodes *[]string) {
 	node := (*nodes)[n]
 
-	if node.HasVisited == PermVisited {
+	if node.HasVisited == gu.PermVisited {
 		return
 	}
 
-	if node.HasVisited == JustVisited {
+	if node.HasVisited == gu.JustVisited {
 		panic("The graph you are sorting is not a dag.  Topological Sort can only be used to sort Dags.")
 	}
 
 	// mark node while its dependencies are being evaluated
-	node.HasVisited = JustVisited
+	node.HasVisited = gu.JustVisited
 
 	for _, nodeStr := range node.Children {
 		visit(nodes, nodeStr, sortedNodes)
 	}
 
-	node.HasVisited = PermVisited
+	node.HasVisited = gu.PermVisited
 	*sortedNodes = append([]string{n}, *sortedNodes...)
 }
 
-func readGraphFromJson(fileLoc string) Graph {
-	// read from the data dir in the graphs folder
-	jsonFile, err := os.Open(fileLoc)
-
-	if err != nil {
-		panic(err)
-	}
-
-	defer jsonFile.Close()
-
-	byteValue, _ := ioutil.ReadAll(jsonFile)
-
-	var g Graph
-	err = json.Unmarshal(byteValue, &g)
-
-	if err != nil {
-		panic(err)
-	}
-
-	return g
-}
-
 func main() {
-	sharedDagG := readGraphFromJson("../data/dag/sharedDag.json")
+	sharedDagG := gu.ReadGraphFromJson("../data/dag/sharedDag.json")
 
 	fmt.Println(topologicalSort(sharedDagG))
 
-	readmeGraph := readGraphFromJson("nodeDag.json")
+	readmeGraph := gu.ReadGraphFromJson("nodeDag.json")
 	fmt.Println(topologicalSort(readmeGraph))
 }
