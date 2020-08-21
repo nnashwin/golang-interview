@@ -49,8 +49,6 @@ func robHouses(nums []int, alreadyRobbed map[int]int) int {
 }
 
 func checkIdx(dp []int, i int) int {
-	fmt.Println("dp: ", dp)
-	fmt.Println(" i: ", i)
 	if i < 0 {
 		return 0
 	}
@@ -64,7 +62,6 @@ func robHousesDp(nums []int) int {
 	m := 0
 
 	for i := 0; i < len(nums); i++ {
-		fmt.Println(" nums: ", nums)
 		dp[i] = nums[i] + max(checkIdx(dp, i-2), checkIdx(dp, i-3))
 		if dp[i] > m {
 			m = dp[i]
