@@ -48,9 +48,37 @@ func robHouses(nums []int, alreadyRobbed map[int]int) int {
 
 }
 
+func checkIdx(dp []int, i int) int {
+	fmt.Println("dp: ", dp)
+	fmt.Println(" i: ", i)
+	if i < 0 {
+		return 0
+	}
+
+	return dp[i]
+}
+
+func robHousesDp(nums []int) int {
+	dp := make([]int, len(nums), len(nums))
+
+	m := 0
+
+	for i := 0; i < len(nums); i++ {
+		fmt.Println(" nums: ", nums)
+		dp[i] = nums[i] + max(checkIdx(dp, i-2), checkIdx(dp, i-3))
+		if dp[i] > m {
+			m = dp[i]
+		}
+	}
+
+	return m
+}
+
 func main() {
 	fmt.Println(robHouse([]int{1, 2, 3, 1}))
-	fmt.Println(robHouse([]int{2, 7, 3, 9, 1}))
-	fmt.Println(robHouse([]int{6, 3, 10, 8, 2, 10, 3, 5, 10, 5, 3}))
+	fmt.Println(robHouse([]int{2, 7, 9, 3, 1}))
+	fmt.Println(robHousesDp([]int{1, 2, 3, 1}))
+	fmt.Println(robHousesDp([]int{2, 7, 9, 3, 1}))
+	fmt.Println(robHousesDp([]int{6, 3, 10, 8, 2, 10, 3, 5, 10, 5, 3}))
 
 }
